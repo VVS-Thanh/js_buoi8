@@ -1,0 +1,14 @@
+.card {
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 1rem;
+    }
+    h3 {
+        color: blue;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    button {
+        width: 20%;
+    }
