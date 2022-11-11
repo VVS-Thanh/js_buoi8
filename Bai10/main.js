@@ -71,18 +71,18 @@ articles.forEach((element, i) => {
 <p id="content">${sliceData[i]}</p>
 <button id="read" onclick ="readMore(this)">Read more</button>
 `;
-  function readMore() {
-    let sliceData = bigData.map((value) => {
-      let limit = value.split(" ").length;
-      if (limit < 50) {
-        document.getElementById("read").style.display = "none";
-      } else
-        document.getElementById("content").innerHTML = value
-          .split(" ", value.length)
-          .join(" ");
-      document.getElementById("read").innerHTML = "Read less";
-    });
-  }
+  // function readMore() {
+  //   let sliceData = bigData.map((value) => {
+  //     let limit = value.split(" ").length;
+  //     if (limit < 50) {
+  //       document.getElementById("read").style.display = "none";
+  //     } else
+  //       document.getElementById("content").innerHTML = value
+  //         .split(" ", value.length)
+  //         .join(" ");
+  //     document.getElementById("read").innerHTML = "Read less";
+  //   });
+  // }
   card.innerHTML += articlesCard;
   main.appendChild(card);
 });
