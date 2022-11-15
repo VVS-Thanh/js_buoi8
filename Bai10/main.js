@@ -30,8 +30,6 @@ articles.forEach((element, i) => {
 
   const card = document.createElement("div");
   card.classList = "card";
-  let char = "";
-  let count = 0;
 
   let newArr = articles.map((value) =>
     value.description.replace(/(\r\n|\n|\r)/gm, "").split(" ")
@@ -48,7 +46,6 @@ articles.forEach((element, i) => {
     //   return value.join(" ");
     // }
   });
-  // .splice(" ", 10);
   spliceArr = newArr.map((value) => {
     return value.splice(" ", 50).join(" ");
   });
@@ -62,41 +59,26 @@ articles.forEach((element, i) => {
     } else {
       return value.split(" ", 50).join(" ").concat(" [...]");
     }
-    // return value.length - 1;
   });
   // console.log(sliceData);
   const articlesCard = `
-<h3>Tác giả: ${articles[i].name}</h3>
-<h4>Tiêu đề: ${articles[i].title}</h4>
-<p id="content">${sliceData[i]}</p>
-<button id="read" onclick ="readMore(this)">Read more</button>
-`;
-  // function readMore() {
-  //   let sliceData = bigData.map((value) => {
-  //     let limit = value.split(" ").length;
-  //     if (limit < 50) {
-  //       document.getElementById("read").style.display = "none";
-  //     } else
-  //       document.getElementById("content").innerHTML = value
-  //         .split(" ", value.length)
-  //         .join(" ");
-  //     document.getElementById("read").innerHTML = "Read less";
-  //   });
-  // }
+  <h3>Tác giả: ${articles[i].name}</h3>
+  <h4>Tiêu đề: ${articles[i].title}</h4>
+  <p id="content${i}">${sliceData[i]}</p>
+  <p id="des${i}" style = "display :none" >${articles[i].description}</p>
+  <button id="read${i}" onclick="readMore(${i})">Read more</button>
+  `;
   card.innerHTML += articlesCard;
   main.appendChild(card);
 });
-
-// let bigData = articles.map((data) => {
-//   return data.description;
-// });
-// let sliceData = bigData.map((value) => {
-//   let limit = value.split(" ").length - 1;
-//   if (limit < 50) {
-//     return value.split(" ", limit).join(" ");
-//   } else {
-//     return value.split(" ", 50).join(" ").concat(" [...]");
-//   }
-//   // return value.length - 1;
-// });
-// console.log(sliceData);
+function readMore(index) {
+  if (index == 1) {
+    document.getElementById("content1").style.display = "none";
+    document.getElementById("des1").style.display = "block";
+    document.getElementById("read1").innerText = "Read less";
+  } else if (index == 2) {
+    document.getElementById("content2").style.display = "none";
+    document.getElementById("des2").style.display = "block";
+    document.getElementById("read2").innerText = "Read less";
+  }
+}
