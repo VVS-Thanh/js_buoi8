@@ -68,17 +68,39 @@ articles.forEach((element, i) => {
   <p id="des${i}" style = "display :none" >${articles[i].description}</p>
   <button id="read${i}" onclick="readMore(${i})">Read more</button>
   `;
+
+  //   const articlesCard = `
+  // Tác giả: ${articles[i].name}
+  // Tiêu đề: ${articles[i].title}
+  // ${articles[i].description.slice(0, 50)}
+  // Read more `;
   card.innerHTML += articlesCard;
   main.appendChild(card);
 });
+
 function readMore(index) {
-  if (index == 1) {
-    document.getElementById("content1").style.display = "none";
-    document.getElementById("des1").style.display = "block";
-    document.getElementById("read1").innerText = "Read less";
-  } else if (index == 2) {
-    document.getElementById("content2").style.display = "none";
-    document.getElementById("des2").style.display = "block";
-    document.getElementById("read2").innerText = "Read less";
+  const selectElementByIndex = document.getElementById(`content${index}`);
+  const selectElementButtonByIndex = document.getElementById(`read${index}`);
+  const valueOfElementByIndex = selectElementByIndex.textContent;
+  console.log(valueOfElementByIndex.length);
+  if (valueOfElementByIndex.length <= 50) {
+    selectElementByIndex.innerHTML = articles[index].description;
+    selectElementButtonByIndex.innerHTML = "Read Less";
+    return;
   }
+
+  selectElementByIndex.innerHTML = articles[index].description.slice(0, 50);
+  selectElementButtonByIndex.innerHTML = "Read More";
 }
+
+// function readMore(index) {
+//   if (index == 1) {
+//     document.getElementById("content1").style.display = "none";
+//     document.getElementById("des1").style.display = "block";
+//     document.getElementById("read1").innerText = "Read less";
+//   } else if (index == 2) {
+//     document.getElementById("content2").style.display = "none";
+//     document.getElementById("des2").style.display = "block";
+//     document.getElementById("read2").innerText = "Read less";
+//   }
+// }

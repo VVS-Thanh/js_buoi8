@@ -35,8 +35,8 @@ const characters = [
     gender: "male",
   },
 ];
-let nameCharArr = [];
-let heightCharArr = [];
+const nameCharArr = [];
+const heightCharArr = [];
 characters.forEach((element) => {
   return nameCharArr.push(element.name) && heightCharArr.push(element.height);
 });
@@ -53,14 +53,14 @@ console.log(under100HeightArr);
 console.log(above100MassArr);
 
 //Bubble-sort theo tên
-let sortName = characters.sort((a, b) => {
-  let fa = a.name.toLowerCase(),
-    fb = b.name.toLowerCase();
+const sortName = characters.sort((a, b) => {
+  let nameNumber1 = a.name.toLowerCase(),
+    nameNumber2 = b.name.toLowerCase();
 
-  if (fa < fb) {
+  if (nameNumber1 < nameNumber2) {
     return -1;
   }
-  if (fa > fb) {
+  if (nameNumber1 > nameNumber2) {
     return 1;
   }
   return 0;
